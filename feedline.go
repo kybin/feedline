@@ -70,7 +70,6 @@ func main() {
         }
         feedTimes = append(feedTimes, t)
     }
-    fmt.Println(feedTimes)
 
     // readStdin will close 'exit' if nothing to read.
     exit := make(chan struct{})
