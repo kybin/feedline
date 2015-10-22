@@ -15,6 +15,13 @@ func init() {
     flag.IntVar(&nprev, "n", 1, "how many lines to remember")
 }
 
+func min(a, b int) int {
+    if a < b {
+        return a
+    }
+    return b
+}
+
 func readStdin(flow chan<- struct{}, exit chan struct{}) {
     defer close(exit)
     scanner := bufio.NewScanner(os.Stdin)
@@ -33,7 +40,7 @@ func feedLine(times []time.Duration, flow <-chan struct{}) {
         select {
         case <-flow:
             i = 0
-        case <-time.After(times[i]):
+        case <-time.After(times[min(i, len(times)-1)]):
             if i == len(times) {
                 continue
             }
