@@ -2,18 +2,11 @@ package main
 
 import (
     "os"
-    "flag"
     "bufio"
     "fmt"
     "time"
     "log"
 )
-
-var nprev int
-
-func init() {
-    flag.IntVar(&nprev, "n", 1, "how many lines to remember")
-}
 
 func min(a, b int) int {
     if a < b {
